@@ -15,8 +15,16 @@ public class DriveSubsystem extends SubsystemBase {
 
   //  public WPI_VictorSPX rightMaster = new WPI_VictorSPX(Constants.rightMotor);
   //  public WPI_VictorSPX leftMaster = new WPI_VictorSPX(Constants.leftMotor);
-    public PWMVictorSPX leftMaster = new PWMVictorSPX(Constants.leftMotor);
-    public PWMVictorSPX rightMaster = new PWMVictorSPX(Constants.rightMotor);
+  //  public PWMVictorSPX leftMaster = new PWMVictorSPX(Constants.leftMotor);
+ //   public PWMVictorSPX rightMaster = new PWMVictorSPX(Constants.rightMotor);
+      public CANSparkMax rightMaster = new CANSparkMax(Constants.rightMotor, MotorType.kBrushless);
+      public CANSparkMax rightFollower = new CANSparkMax(Constants.rightFollow, MotorType.kBrushless);
+      public CANSparkMax rightFollower2 = new CANSparkMax(Constants.rightFollow2, MotorType.kBrushless);
+
+  //Left Motors
+      public CANSparkMax leftMaster = new CANSparkMax(Constants.leftMotor, MotorType.kBrushless);
+      public CANSparkMax leftFollower = new CANSparkMax(Constants.leftFollow, MotorType.kBrushless);
+      public CANSparkMax leftFollower2 = new CANSparkMax(Constants.leftFollow2, MotorType.kBrushless);
 
 
 
@@ -25,6 +33,13 @@ public class DriveSubsystem extends SubsystemBase {
         // rightFollower.follow(rightMaster);
         // leftFollower.follow(leftMaster);
         //drive = new DifferentialDrive(leftMaster, rightMaster);
+        leftMaster.setInverted(true);
+    leftFollower.setInverted(true);
+    leftFollower2.setInverted(true);
+     rightFollower.follow(rightMaster);
+     leftFollower.follow(leftMaster);
+     rightFollower2.follow(rightMaster);
+     leftFollower2.follow(leftMaster);
       }
       public void rotate(double speed){
         leftMaster.set(speed);

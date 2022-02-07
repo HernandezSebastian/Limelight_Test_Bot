@@ -15,6 +15,7 @@ public class Robot extends TimedRobot {
   public static Controls controls = new Controls();
   public static DriveSubsystem drive = new DriveSubsystem();
   public static Limelight limelight = new Limelight();
+  public static ShooterSubsystem shooter = new ShooterSubsystem();
   //public static Cameras cameras = new Cameras();
 
   //public static Drivetrain drive;
